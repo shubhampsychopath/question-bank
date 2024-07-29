@@ -1,0 +1,60 @@
+class Clock {
+    private int hours;
+    private int minutes;
+    private int seconds;
+    private boolean isAM;
+
+    public Clock(int hours, int minutes, int seconds) 
+    {
+        if (isValidTime(hours, minutes, seconds)) 
+      {
+            this.hours = hours;
+            this.minutes = minutes;
+            this.seconds = seconds;
+            this.isAM = hours < 12;
+        } else {
+            throw new IllegalArgumentException("Invalid time input.");
+        }
+    }
+
+    private boolean isValidTime(int hours, int minutes, int seconds) 
+      {
+        return hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60 && seconds >= 0 && seconds < 60;
+    }
+
+    public void displayTime() 
+{
+        int displayHours = (hours % 12 == 0) ? 12 : hours % 12;
+        String period = isAM ? "AM" : "PM";
+        System.out.printf("Time: %02d:%02d:%02d %s%n", displayHours, minutes, seconds, period);
+    }
+
+    public void setTime(int hours, int minutes, int seconds) 
+  {
+        if (isValidTime(hours, minutes, seconds)) 
+  {
+            this.hours = hours;
+            this.minutes = minutes;
+            this.seconds = seconds;
+            this.isAM = hours < 12;
+        } else {
+            throw new IllegalArgumentException("Invalid time input.");
+        }
+    }
+}
+
+public class ClockDemo {
+    public static void main(String[] args) 
+      {
+        try {
+            Clock clock = new Clock(14, 30, 45);            
+            clock.displayTime();
+
+            clock.setTime(9, 15, 30); 
+            clock.displayTime();
+        } catch (IllegalArgumentException e) 
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+}
