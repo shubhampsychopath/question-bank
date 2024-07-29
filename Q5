@@ -1,0 +1,70 @@
+class Continent 
+{
+    String continentName;
+
+    Continent(String continentName) 
+    {
+        this.continentName = continentName;
+    }
+
+    void displayContinent() 
+    {
+        System.out.println("Continent: " + continentName);
+    }
+}
+
+class Country extends Continent 
+{
+    String countryName;
+
+    Country(String continentName, String countryName) 
+    {
+        super(continentName);
+        this.countryName = countryName;
+    }
+
+    void displayCountry() 
+    {
+        System.out.println("Country: " + countryName);
+    }
+}
+
+class State extends Country 
+{
+    String stateName;
+    String placeName;
+
+    State(String continentName, String countryName, String stateName, String placeName) 
+      {
+        super(continentName, countryName);
+        this.stateName = stateName;
+        this.placeName = placeName;
+    }
+
+    void displayState() 
+{
+        System.out.println("State: " + stateName);
+    }
+
+    void displayPlace() 
+    {
+        System.out.println("Place: " + placeName);
+    }
+
+    void displayDetails() 
+      {
+        displayPlace();
+        displayState();
+        displayCountry();
+        displayContinent();
+    }
+}
+
+public class MultilevelInheritance 
+  {
+    public static void main(String[] args) 
+      {
+        State place = new State("Asia", "India", "Karnataka", "Bangalore");
+        place.displayDetails();
+    }
+}
