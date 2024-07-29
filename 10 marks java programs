@@ -1,0 +1,45 @@
+public class PrimeNumbersInArray 
+{
+  public static boolean isPrime(int num) 
+{
+        if (num <= 1) 
+        {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) 
+        {
+            if (num % i == 0) 
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) 
+    {
+        if (args.length == 0) 
+        {
+            System.out.println("Please enter an array of integers.");
+            return;
+        }
+        int[] numbers = new int[args.length];
+        try 
+          {
+            for (int i = 0; i < args.length; i++) {
+                numbers[i] = Integer.parseInt(args[i]);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Please provide valid integers as command line arguments.");
+            return;
+        }
+
+        // Find and print all prime numbers in the array
+        System.out.println("Prime numbers in the array:");
+        for (int num : numbers) {
+            if (isPrime(num)) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+}
