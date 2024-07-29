@@ -1,0 +1,67 @@
+class Bank {
+    private int accountNumber;
+    private String accountHolderName;
+    private double balance;
+
+    public Bank(int accountNumber, String accountHolderName, double initialBalance) 
+    {
+        this.accountNumber = accountNumber;
+        this.accountHolderName = accountHolderName;
+        this.balance = initialBalance;
+    }
+
+    public void deposit(double amount) 
+      {
+        if (amount > 0) 
+        {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else 
+          {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    public void withdraw(double amount) 
+      {
+        if (amount > 0 && amount <= balance) 
+          {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Invalid or insufficient funds for withdrawal.");
+        }
+    }
+
+    public double getBalance() 
+    {
+        return balance;
+    }
+    public String toString() 
+      {
+        return "Account Number: " + accountNumber + "\n" +
+               "Account Holder: " + accountHolderName + "\n" +
+               "Balance: " + balance;
+    }
+}
+
+public class BankDemo 
+{
+    public static void main(String[] args) 
+{
+        Bank account = new Bank(123456, "Alice Smith", 1000.0);
+
+        System.out.println("Initial account details:");
+        System.out.println(account);
+
+        account.deposit(500.0);
+        System.out.println("\nAccount details after deposit:");
+        System.out.println(account);
+
+        account.withdraw(300.0);
+        System.out.println("\nAccount details after withdrawal:");
+        System.out.println(account);
+
+        System.out.println("\nCurrent balance: " + account.getBalance());
+    }
+}
