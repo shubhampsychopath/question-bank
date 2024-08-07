@@ -1,0 +1,43 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class BorderLayoutExample {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Border Layout Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create components
+        JPanel northPanel = new JPanel();
+        northPanel.setBackground(Color.RED);
+        northPanel.add(new JLabel("North"));
+
+        JPanel southPanel = new JPanel();
+        southPanel.setBackground(Color.GREEN);
+        southPanel.add(new JLabel("South"));
+
+        JPanel eastPanel = new JPanel();
+        eastPanel.setBackground(Color.BLUE);
+        eastPanel.add(new JLabel("East"));
+
+        JPanel westPanel = new JPanel();
+        westPanel.setBackground(Color.YELLOW);
+        westPanel.add(new JLabel("West"));
+
+        JPanel centerPanel = new JPanel();
+        centerPanel.setBackground(Color.WHITE);
+        centerPanel.add(new JLabel("Center"));
+
+        // Set layout to Border Layout
+        frame.setLayout(new BorderLayout());
+
+        // Add components to the frame
+        frame.add(northPanel, BorderLayout.NORTH);
+        frame.add(southPanel, BorderLayout.SOUTH);
+        frame.add(eastPanel, BorderLayout.EAST);
+        frame.add(westPanel, BorderLayout.WEST);
+        frame.add(centerPanel, BorderLayout.CENTER);
+
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+    }
+}
